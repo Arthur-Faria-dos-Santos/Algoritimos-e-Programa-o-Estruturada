@@ -1,47 +1,46 @@
 #include <stdio.h>
-#include <math.h>
+#include<math.h>
 
-//Dados três valores A, B e C, construa um algoritmo, que imprima os valores de forma ascendente (do menor para o maior). //
+//Dados três valores A, B e C, construa um algoritmo, que imprima os valores de forma ascendente (do menor para o maior).
 
 int main (){
-  float numeA, numeB, numeC, numeD;
+ 
+   int A, B, C;
 
-  printf("digite o valor de A:");
-  fflush(stdin);
-  scanf("%f", &numeA);
-  
-  printf("digite o valor de B:");
-  fflush(stdin);
-  scanf("%f", &numeB);
-  
-  printf("digite o valor de C:");
-  fflush(stdin);
-  scanf("%f", &numeC);
+   printf("Digite o valor de A:");
+   scanf("%d", &A);
+   printf("Digite o valor de B:");
+   scanf("%d",&B);
+   printf("Digite o valor de C:");
+   scanf("%d",&C);
 
-  if ((numeA < numeB) && (numeA < numeC) && (numeA < numeD)){
-  printf("\nA e numero MENOR:%.2f", numeA);
-  }
+   if(A < B && A < C){
+        printf("%d ", A);
+        if(B < C){
+            printf("%d %d ", B, C);
+        }else if (C < B){
+            printf("%d %d ", C, B);
+        }
 
-  if ((numeB < numeA) && (numeB < numeC) && (numeB < numeD)){
-  printf("\nB e numero MENOR:%.2f", numeB);
-  }
+   }else if(B < A && B < C){
+        printf("%d ", B);
 
-  if ((numeC < numeA) && (numeC < numeB) && (numeC < numeD)){
-  printf("\nC e numero MENOR:%.2f", numeC);
-  }
+        if(A < C){
+            printf("%d %d ", A, C);
+        }else if (C < A){
+            printf("%d %d ", C, A);
+        }
+   }else if(C < A && C < B){
+        printf("%d ", C);
 
-  if ((numeA > numeB) && (numeA > numeC) && (numeA > numeD)){
-    printf("A e numero maior:%.2f", numeA);
-  };
-  
-  if ((numeB > numeA) && (numeB > numeC) && (numeB > numeD)){
-    printf("B e numero maior:%.2f", numeB);
-  };
-  
-  if ((numeC > numeA) && (numeC > numeB) && (numeC > numeD)){
-    printf("C e numero maior:%.2f", numeC);
-  };
-  
+        if(A < B){
+            printf("%d %d ", A, B);
+        }else if (B < A){
+            printf("%d %d ", B, A);
+        }
+
+   }
 
   return 0;
+
 }
