@@ -6,10 +6,10 @@ int main() {
     int quantidadeNegativos = 0;
     double somaPositivos = 0.0;
 
-    printf("Digite 10 números reais:\n");
+    printf("Digite 10 numeros reais:\n");
 
     for (int i = 0; i < tamanho; i++) {
-        printf("Número %d: ", i + 1);
+        printf("Numero %d: ", i + 1);
         scanf("%lf", &vetor[i]);
 
         if (vetor[i] < 0) {
@@ -19,9 +19,9 @@ int main() {
         }
     }
 
-    printf("Quantidade de números negativos: %d\n", quantidadeNegativos);
+    printf("Quantidade de numeros negativos: %d\n", quantidadeNegativos);
 
-    printf("Soma dos números positivos: %.2lf\n", somaPositivos);
+    printf("Soma dos numeros positivos: %.2lf\n", somaPositivos);
 
     return 0;
 }

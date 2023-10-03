@@ -29,8 +29,8 @@ int main() {
         }
     }
 
-    printf("Posição do maior valor: %d\n", posicaoMaior);
-    printf("Posição do menor valor: %d\n", posicaoMenor);
+    printf("Posicao do maior valor: %d\n", posicaoMaior);
+    printf("Posicao do menor valor: %d\n", posicaoMenor);
 
     return 0;
 }
