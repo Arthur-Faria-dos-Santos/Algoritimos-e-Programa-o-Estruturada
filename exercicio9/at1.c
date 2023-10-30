@@ -16,4 +16,4 @@ int main(){
 
     A[4] = 100;
     printf("\nValores dos vetores:\nVetor 1:  %d\nVetor 2:  %d\nVetor 3:  %d\nVetor 4:  %d\nVetor 5:  %d\nVetor 6:  %d", A[0], A[1], A[2], A[3], A[4], A[5]);
-}
+} 

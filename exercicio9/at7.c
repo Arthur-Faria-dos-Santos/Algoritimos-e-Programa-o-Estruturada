@@ -32,5 +32,4 @@ int main() {
     printf("O maior elemento do vetor é: %d\n", maior);
     printf("Ele está na posição: %d\n", posicao);
 
-    return 0;
 }

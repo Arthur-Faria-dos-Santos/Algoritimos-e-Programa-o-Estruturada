@@ -28,5 +28,4 @@ int main() {
     printf("O maior elemento do vetor é: %d\n", maior);
     printf("O menor elemento do vetor é: %d\n", menor);
 
-    return 0;
 }

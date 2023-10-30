@@ -24,5 +24,4 @@ int main() {
         printf("X e/ou Y estão fora do intervalo válido (0 a 7).\n");
     }
 
-    return 0;
 }

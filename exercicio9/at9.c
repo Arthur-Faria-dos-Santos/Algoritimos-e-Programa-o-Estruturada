@@ -30,5 +30,4 @@ int main() {
         printf("Não foram digitados 6 valores inteiros pares.\n");
     }
 
-    return 0;
 }

@@ -23,5 +23,4 @@ int main() {
 
     printf("Soma dos numeros positivos: %.2lf\n", somaPositivos);
 
-    return 0;
 }

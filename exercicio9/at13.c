@@ -32,5 +32,4 @@ int main() {
     printf("Posicao do maior valor: %d\n", posicaoMaior);
     printf("Posicao do menor valor: %d\n", posicaoMenor);
 
-    return 0;
 }
