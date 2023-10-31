@@ -46,7 +46,6 @@ void imprimirMatriz(int A[TAMANHO][TAMANHO]) {
 int main() {
     int matriz[10][10];
 
-    // Populando a matriz com valores fictícios para exemplificação
     int contador = 1;
     for (int i = 0; i < TAMANHO; i++) {
         for (int j = 0; j < TAMANHO; j++) {

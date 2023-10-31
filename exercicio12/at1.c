@@ -32,7 +32,7 @@ void opcaoParcelado(float total) {
         scanf("%d", &parcelas);
 
         if (parcelas >= 3 && parcelas <= 10) {
-            valorParcela = total / parcelas * 1.03; // Adiciona 3% de juros ao valor de cada prestação
+            valorParcela = total / parcelas * 1.03;
             printf("Valor total parcelado em %d vezes com juros: R$ %.2f em %d parcelas de R$ %.2f\n", parcelas, total * 1.03, parcelas, valorParcela);
         } else {
             printf("Número de parcelas inválido.\n");
