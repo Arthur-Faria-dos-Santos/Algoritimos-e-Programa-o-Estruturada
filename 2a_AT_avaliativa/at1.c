@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <locale.h>
 
 int validaQuantidade(int quantidade) {
     if (quantidade >= 0) {
         return quantidade;
     } else {
-        printf("Quantidade inválida. Digite novamente: ");
+        printf("Quantidade invalida. Digite novamente: ");
         return validaQuantidade(quantidade);
     }
 }
@@ -24,7 +25,7 @@ float calculaSalario(int quantidade) {
 }
 
 void mostraFinal(char nome[100], float salario) {
-    printf("O funcionário %s receberá um salário de R$ %.2f\n", nome, salario);
+    printf("O funcionario %s recebera um salario de R$ %.2f\n", nome, salario);
 }
 
 int main() {
@@ -32,14 +33,14 @@ int main() {
     int quantidadePecas;
 
     while (1) {
-        printf("Digite o nome do funcionário (ou 'fim' para encerrar): ");
+        printf("Digite o nome do funcionario (ou 'fim' para encerrar): ");
         scanf("%s", nome);
 
         if (strcmp(nome, "fim") == 0) {
             break;
         }
 
-        printf("Digite a quantidade de peças fabricadas por %s: ", nome);
+        printf("Digite a quantidade de pecas fabricadas por %s: ", nome);
         scanf("%d", &quantidadePecas);
 
         int quantidadeValidada = validaQuantidade(quantidadePecas);

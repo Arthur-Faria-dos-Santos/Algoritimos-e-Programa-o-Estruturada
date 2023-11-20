@@ -31,7 +31,7 @@ void incluirUsuario(Usuario usuarios[], int* total_user) {
         scanf(" %s", novo_user.email);
 
         while (strchr(novo_user.email, '@') == NULL) {
-            printf("E-mail inválido. Digite novamente: ");
+            printf("E-mail invalido. Digite novamente: ");
             scanf(" %s", novo_user.email);
         }
 
@@ -39,7 +39,7 @@ void incluirUsuario(Usuario usuarios[], int* total_user) {
         scanf(" %s", novo_user.sexo);
 
         while (strcmp(novo_user.sexo, "Feminino") != 0 && strcmp(novo_user.sexo, "Masculino") != 0 && strcmp(novo_user.sexo, "Indiferente") != 0) {
-            printf("Sexo inválido. Digite novamente: ");
+            printf("Sexo invalido. Digite novamente: ");
             scanf(" %s", novo_user.sexo);
         }
 
@@ -50,7 +50,7 @@ void incluirUsuario(Usuario usuarios[], int* total_user) {
         scanf("%lf", &novo_user.altura);
 
         while (novo_user.altura < 1.0 || novo_user.altura > 2.0) {
-            printf("Altura inválida. Digite novamente: ");
+            printf("Altura invalida. Digite novamente: ");
             scanf("%lf", &novo_user.altura);
         }
 
@@ -60,7 +60,7 @@ void incluirUsuario(Usuario usuarios[], int* total_user) {
         usuarios[*total_user] = novo_user;
         (*total_user)++;
 
-        printf("Usuário cadastrado com sucesso. ID: %d\n", novo_user.id);
+        printf("Usuario cadastrado com sucesso. ID: %d\n", novo_user.id);
     } else {
         printf("Limite máximo de usuários atingido.\n");
     }
@@ -68,7 +68,7 @@ void incluirUsuario(Usuario usuarios[], int* total_user) {
 
 void editarUsuario(Usuario usuarios[], int total_user) {
     int idEditar;
-    printf("Digite o ID do usuário a ser editado: ");
+    printf("Digite o ID do usuario a ser editado: ");
     scanf("%d", &idEditar);
 
     for (int i = 0; i < total_user; i++) {
@@ -80,7 +80,7 @@ void editarUsuario(Usuario usuarios[], int total_user) {
             scanf(" %s", usuarios[i].email);
 
             while (strchr(usuarios[i].email, '@') == NULL) {
-                printf("E-mail inválido. Digite novamente: ");
+                printf("E-mail invalido. Digite novamente: ");
                 scanf(" %s", usuarios[i].email);
             }
 
@@ -90,35 +90,35 @@ void editarUsuario(Usuario usuarios[], int total_user) {
             while (strcmp(usuarios[i].sexo, "Feminino") != 0 &&
                    strcmp(usuarios[i].sexo, "Masculino") != 0 &&
                    strcmp(usuarios[i].sexo, "Indiferente") != 0) {
-                printf("Sexo inválido. Digite novamente: ");
+                printf("Sexo invalido. Digite novamente: ");
                 scanf(" %s", usuarios[i].sexo);
             }
 
-            printf("Digite o novo endereço: ");
+            printf("Digite o novo endereco: ");
             scanf(" %[^\n]s", usuarios[i].endereco);
 
             printf("Digite a nova altura (entre 1 e 2 metros): ");
             scanf("%lf", &usuarios[i].altura);
 
             while (usuarios[i].altura < 1.0 || usuarios[i].altura > 2.0) {
-                printf("Altura inválida. Digite novamente: ");
+                printf("Altura invalida. Digite novamente: ");
                 scanf("%lf", &usuarios[i].altura);
             }
 
             printf("A pessoa foi vacinada? (1 para sim, 0 para não): ");
             scanf("%d", &usuarios[i].vacina);
 
-            printf("Usuário editado com sucesso.\n");
+            printf("Usuario editado com sucesso.\n");
             return;
         }
     }
 
-    printf("Usuário não encontrado.\n");
+    printf("Usuario nao encontrado.\n");
 }
 
 void excluirUsuario(Usuario usuarios[], int* total_user) {
     int idExcluir;
-    printf("Digite o ID do usuário a ser excluído: ");
+    printf("Digite o ID do usuario a ser excluido: ");
     scanf("%d", &idExcluir);
 
     for (int i = 0; i < *total_user; i++) {
@@ -128,23 +128,23 @@ void excluirUsuario(Usuario usuarios[], int* total_user) {
             }
 
             (*total_user)--;
-            printf("Usuário excluído com sucesso.\n");
+            printf("Usuário excluido com sucesso.\n");
             return;
         }
     }
 
-    printf("Usuário não encontrado.\n");
+    printf("Usuario não encontrado.\n");
 }
 
 void buscarUsuarioPorEmail(Usuario usuarios[], int total_user) {
     char emailBusca[100];
-    printf("Digite o e-mail do usuário a ser buscado: ");
+    printf("Digite o e-mail do usuario a ser buscado: ");
     scanf(" %s", emailBusca);
 
     for (int i = 0; i < total_user; i++) {
         if (strcmp(usuarios[i].email, emailBusca) == 0) {
-            printf("Usuário encontrado:\n");
-            printf("ID: %d | Nome: %s | E-mail: %s | Sexo: %s | Endereço: %s | Altura: %.2f | Vacina: %s\n",
+            printf("Usuario encontrado:\n");
+            printf("ID: %d | Nome: %s | E-mail: %s | Sexo: %s | Endereco: %s | Altura: %.2f | Vacina: %s\n",
                    usuarios[i].id, usuarios[i].nome_completo, usuarios[i].email,
                    usuarios[i].sexo, usuarios[i].endereco, usuarios[i].altura,
                    usuarios[i].vacina ? "Sim" : "Não");
@@ -152,13 +152,13 @@ void buscarUsuarioPorEmail(Usuario usuarios[], int total_user) {
         }
     }
 
-    printf("Usuário não encontrado.\n");
+    printf("Usuario nao encontrado.\n");
 }
 
 void imprimirTodosUsuarios(Usuario usuarios[], int total_user) {
-    printf("Lista de Todos os Usuários:\n");
+    printf("Lista de Todos os Usuarios:\n");
     for (int i = 0; i < total_user; i++) {
-        printf("ID: %d | Nome: %s | E-mail: %s | Sexo: %s | Endereço: %s | Altura: %.2f | Vacina: %s\n",
+        printf("ID: %d | Nome: %s | E-mail: %s | Sexo: %s | Endereco: %s | Altura: %.2f | Vacina: %s\n",
                usuarios[i].id, usuarios[i].nome_completo, usuarios[i].email,
                usuarios[i].sexo, usuarios[i].endereco, usuarios[i].altura,
                usuarios[i].vacina ? "Sim" : "Não");
@@ -174,13 +174,13 @@ int main() {
 
     do {
         printf("\n--- Menu ---\n");
-        printf("1 == Incluir Usuário\n");
-        printf("2 == Editar Usuário\n");
-        printf("3 == Excluir Usuário\n");
-        printf("4 == Buscar Usuário por E-mail\n");
-        printf("5 == Imprimir Todos os Usuários\n");
+        printf("1 == Incluir Usuario\n");
+        printf("2 == Editar Usuario\n");
+        printf("3 == Excluir Usuario\n");
+        printf("4 == Buscar Usuario por E-mail\n");
+        printf("5 == Imprimir Todos os Usuarios\n");
         printf("0 == Sair\n");
-        printf("Escolha uma opção: ");
+        printf("Escolha uma opcao: ");
         scanf(" %c", &opcao);
 
         switch (opcao) {
@@ -203,7 +203,7 @@ int main() {
                 printf("Saindo do programa.\n");
                 break;
             default:
-                printf("Opção inválida. Tente novamente.\n");
+                printf("Opcao invalida. Tente novamente.\n");
         }
 
     } while (opcao != '0');

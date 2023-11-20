@@ -8,7 +8,7 @@ char validaSexo() {
     scanf(" %c", &sexo);
 
     while (sexo != 'M' && sexo != 'm' && sexo != 'F' && sexo != 'f') {
-        printf("Sexo inválido. Digite novamente (M/F): ");
+        printf("Sexo invalido. Digite novamente (M/F): ");
         scanf(" %c", &sexo);
     }
 
@@ -17,11 +17,11 @@ char validaSexo() {
 
 float validaSalario() {
     float salario;
-    printf("Digite o salário em reais: ");
+    printf("Digite o salario em reais: ");
     scanf("%f", &salario);
 
     while (salario <= 1.0) {
-        printf("Salário inválido. Deve ser maior que R$ 1,00. Digite novamente: ");
+        printf("Salário invalido. Deve ser maior que R$ 1,00. Digite novamente: ");
         scanf("%f", &salario);
     }
 
@@ -37,14 +37,14 @@ void classificaSalario(float salario, int* abaixo, int* acima) {
 }
 
 void mostraClassifica(float salario, char sexo) {
-    printf("Salário: R$ %.2f\n", salario);
+    printf("Salario: R$ %.2f\n", salario);
 
     if (salario < salario_minimo) {
-        printf("Classificação: Abaixo do salário mínimo\n");
+        printf("Classificacao: Abaixo do salario minimo\n");
     } else if (salario == salario_minimo) {
-        printf("Classificação: Igual ao salário mínimo\n");
+        printf("Classificacao: Igual ao salario minimo\n");
     } else {
-        printf("Classificação: Acima do salário mínimo\n");
+        printf("Classificacao: Acima do salario minimo\n");
     }
 
     if (sexo == 'M' || sexo == 'm') {
@@ -66,7 +66,7 @@ int main() {
         mostraClassifica(salario, sexo);
 
         char continuar;
-        printf("Deseja cadastrar mais um assalariado? (S para sim, qualquer outra tecla para não): ");
+        printf("Deseja cadastrar mais um assalariado? (S para sim, qualquer outra tecla para nao): ");
         scanf(" %c", &continuar);
 
         if (continuar != 'S' && continuar != 's') {
@@ -74,8 +74,8 @@ int main() {
         }
     }
 
-    printf("\nQuantidade de assalariados abaixo do salário mínimo: %d\n", salario_abaixo);
-    printf("Quantidade de assalariados acima do salário mínimo: %d\n", salario_acima);
+    printf("\nQuantidade de assalariados abaixo do salario minimo: %d\n", salario_abaixo);
+    printf("Quantidade de assalariados acima do salario minimo: %d\n", salario_acima);
 
     return 0;
 }
