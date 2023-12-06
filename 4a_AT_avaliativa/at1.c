@@ -8,7 +8,7 @@
 
 typedef struct Car {
 	char owner[64];	
-	char combustivel[12]; // alcool, diesel ou gasolina
+	char combustivel[12];
 	char modelo[64];	
 	char cor[64];	
 	int numChassi;
@@ -41,8 +41,8 @@ int main () {
 		printf("--- \n");
 		printf("A - lista todos os proprietarios cujos carros são do ano de 2010 ou posterior e que sejam movidos a diesel \n");
 		printf("B - lista todas as placas que comecem com a letra J e terminem com 0, 2, 4 ou 7 e seus respectivos proprietarios \n");
-		printf("C - lista o modelo e a cor dos veículos cujas placas possuem como segunda letra uma vogal e cuja soma dos valores numéricos fornece um numero par \n");
-		printf("D - troca de proprietario com o fornecimento do número do chassi apenas para carros com placas que não possuam nenhum dígito igual a zero \n");
+		printf("C - lista o modelo e a cor dos veículos cujas placas possuem como segunda letra uma vogal e cuja soma dos valores numericos fornece um numero par \n");
+		printf("D - troca de proprietario com o fornecimento do numero do chassi apenas para carros com placas que não possuam nenhum digito igual a zero \n");
 		printf("Ctrl/C - SAIR \n");
 
 		identificador(liskedListHead);
@@ -127,6 +127,8 @@ void Ler_todos (Node *liskedListHead)
     }
 }
 
+    // Uma função que liste todos os proprietários cujos carros são do ano de 2010 ou posterior e que sejam movidos a diesel.
+    
 void handleA (Node *liskedListHead) 
 {
     printf("PROPRIETARIOS DE CARROS DO ANO DE 2010 OU POSTERIOR MOVIDO A DIESEL\n\n");    
@@ -163,6 +165,7 @@ void handleB (Node *liskedListHead)
 
 
 //  Uma função que liste o modelo e a cor dos veículos cujas placas possuem como segunda letra uma vogal e cuja soma dos valores numéricos fornece um número par.
+//  Uma função que liste todas as placas que comecem com a letra J e terminem com 0, 2, 4 ou 7 e seus respectivos proprietários.
 
 void handleC (Node *liskedListHead) 
 {
