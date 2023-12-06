@@ -13,7 +13,7 @@ typedef struct User {
 	float value;
 } User;
 
-int userListIndex = 0;
+int lista_User = 0;
 
 void clearScreen()
 {
@@ -33,17 +33,17 @@ void criacao_produto (User Lis_usuario[]) {
 
 	srand(time(NULL));
 	int id = rand();
-	Lis_usuario[userListIndex].id = id;
+	Lis_usuario[lista_User].id = id;
 
 	printf("--- CRIACAO DE PRODUTO --- \n");
 	printf("Digite a descricao: ");
-	fgets(Lis_usuario[userListIndex].desc, 70, stdin);
+	fgets(Lis_usuario[lista_User].desc, 70, stdin);
 	printf("Digite a quantidade: ");
-	scanf("%d", &Lis_usuario[userListIndex].amoult);
+	scanf("%d", &Lis_usuario[lista_User].amoult);
 	printf("Digite o valor: ");
-	scanf("%f", &Lis_usuario[userListIndex].value);
+	scanf("%f", &Lis_usuario[lista_User].value);
 	
-	userListIndex++;
+	lista_User++;
 	clearScreen();
 }
 
@@ -53,7 +53,7 @@ void ReadAll (User Lis_usuario[]) {
 	clearScreen();
 
 	printf("--- RELATORIO --- \n\n");
-	for(int i = 0; i < userListIndex; i++) {
+	for(int i = 0; i < lista_User; i++) {
 		if (Lis_usuario[i].id != 0) {
 			printf("ID %d \n", Lis_usuario[i].id);
 			printf("Descricao %s", Lis_usuario[i].desc);
@@ -73,7 +73,7 @@ void Busc_ID (User Lis_usuario[]) {
 	printf("Digite um ID (numero): ");
 	scanf("%d", &targetId);
 
-	for(int i = 0; i < userListIndex; i++) {
+	for(int i = 0; i < lista_User; i++) {
 		if(targetId == Lis_usuario[i].id) {
 			printf("ID %d \n", Lis_usuario[i].id);
 			printf("DESCRICAO %s", Lis_usuario[i].desc);
@@ -99,9 +99,9 @@ void Delete_ID (User Lis_usuario[]) {
 	printf("Digite um ID: ");
 	scanf("%d", &targetId);
 
-	for(int i = 0; i < userListIndex; i++) {
+	for(int i = 0; i < lista_User; i++) {
 		if(targetId == Lis_usuario[i].id) {
-			remov_elemento(Lis_usuario, i, userListIndex);
+			remov_elemento(Lis_usuario, i, lista_User);
 			return;
 		}
 	}
