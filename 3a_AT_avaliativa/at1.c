@@ -1,153 +1,159 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
+#include <time.h>
+#include <stdlib.h>
 
-typedef struct {
-    int codigo;
-    char descricao[50];
-    int quantidade;
-    float valor;
-} Produto;
+#define LIST_LIMIT 999
 
-typedef struct No {
-    Produto produto;
-    struct No* proximo;
-} No;
+typedef struct User {
+	int id;
+	char desc[70];	
+	int amoult;	
+	float value;
+} User;
 
-typedef struct {
-    No* inicio;
-} ListaEstoque;
+int userListIndex = 0;
 
-void inicializaLista(ListaEstoque* lista) {
-    lista->inicio = NULL;
+void clearScreen()
+{
+  const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e[2J";
+  write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
 }
 
-void adicionaProduto(ListaEstoque* lista) {
-    No* novoNo = (No*)malloc(sizeof(No));
-    if (novoNo == NULL) {
-        printf("Erro ao alocar memória.\n");
-        exit(1);
-    }
-
-    printf("Digite o código do produto: ");
-    scanf("%d", &novoNo->produto.codigo);
-
-    printf("Digite a descrição do produto: ");
-    scanf("%s", novoNo->produto.descricao);
-
-    printf("Digite a quantidade do produto: ");
-    scanf("%d", &novoNo->produto.quantidade);
-
-    printf("Digite o valor do produto: ");
-    scanf("%f", &novoNo->produto.valor);
-
-    novoNo->proximo = lista->inicio;
-    lista->inicio = novoNo;
-
-    printf("Produto adicionado com sucesso.\n");
+User* initiateList () {
+	User *users = malloc(LIST_LIMIT);
+	return users;
 }
 
-void geraRelatorio(ListaEstoque* lista) {
-    No* atual = lista->inicio;
+    // Criacao
 
-    printf("Relatório de Estoque:\n");
+void criacao_produto (User Lis_usuario[]) {
+	clearScreen();
 
-    while (atual != NULL) {
-        printf("Código: %d | Descrição: %s | Quantidade: %d | Valor: R$ %.2f\n",
-               atual->produto.codigo, atual->produto.descricao,
-               atual->produto.quantidade, atual->produto.valor);
+	srand(time(NULL));
+	int id = rand();
+	Lis_usuario[userListIndex].id = id;
 
-        atual = atual->proximo;
-    }
+	printf("--- CRIACAO DE PRODUTO --- \n");
+	printf("Digite a descricao: ");
+	fgets(Lis_usuario[userListIndex].desc, 70, stdin);
+	printf("Digite a quantidade: ");
+	scanf("%d", &Lis_usuario[userListIndex].amoult);
+	printf("Digite o valor: ");
+	scanf("%f", &Lis_usuario[userListIndex].value);
+	
+	userListIndex++;
+	clearScreen();
 }
 
-void pesquisaProduto(ListaEstoque* lista) {
-    int codigoPesquisa;
-    printf("Digite o código do produto a ser pesquisado: ");
-    scanf("%d", &codigoPesquisa);
+    // Listar
 
-    No* atual = lista->inicio;
+void ReadAll (User Lis_usuario[]) {
+	clearScreen();
 
-    while (atual != NULL) {
-        if (atual->produto.codigo == codigoPesquisa) {
-            printf("Produto encontrado:\n");
-            printf("Código: %d | Descrição: %s | Quantidade: %d | Valor: R$ %.2f\n",
-                   atual->produto.codigo, atual->produto.descricao,
-                   atual->produto.quantidade, atual->produto.valor);
-            return;
-        }
-
-        atual = atual->proximo;
-    }
-
-    printf("Produto não encontrado.\n");
+	printf("--- RELATORIO --- \n\n");
+	for(int i = 0; i < userListIndex; i++) {
+		if (Lis_usuario[i].id != 0) {
+			printf("ID %d \n", Lis_usuario[i].id);
+			printf("Descricao %s", Lis_usuario[i].desc);
+			printf("quantidade %d \n", Lis_usuario[i].amoult);
+			printf("VALOR %.2f \n", Lis_usuario[i].value);
+			printf("\n");
+		}
+	}
 }
 
-void removeProduto(ListaEstoque* lista) {
-    int codigoRemocao;
-    printf("Digite o código do produto a ser removido: ");
-    scanf("%d", &codigoRemocao);
+    // Procurar por ID
 
-    No* atual = lista->inicio;
-    No* anterior = NULL;
+void Busc_ID (User Lis_usuario[]) {
+	clearScreen();
+	
+	int targetId;
+	printf("Digite um ID (numero): ");
+	scanf("%d", &targetId);
 
-    while (atual != NULL) {
-        if (atual->produto.codigo == codigoRemocao) {
-            if (anterior == NULL) {
-                lista->inicio = atual->proximo;
-            } else {
-                anterior->proximo = atual->proximo;
-            }
-
-            free(atual);
-            printf("Produto removido com sucesso.\n");
-            return;
-        }
-
-        anterior = atual;
-        atual = atual->proximo;
-    }
-
-    printf("Produto não encontrado.\n");
+	for(int i = 0; i < userListIndex; i++) {
+		if(targetId == Lis_usuario[i].id) {
+			printf("ID %d \n", Lis_usuario[i].id);
+			printf("DESCRICAO %s", Lis_usuario[i].desc);
+			printf("QUANTIDADE %d \n", Lis_usuario[i].amoult);
+			printf("VALOR %.2f \n", Lis_usuario[i].value);
+			printf("\n");
+		}
+	}
 }
 
-int main() {
-    ListaEstoque estoque;
-    inicializaLista(&estoque);
+void remov_elemento(User *array, int index, int array_length)
+{
+   int i;
+   for(i = index; i < array_length; i++) array[i] = array[i + 1];
+}
 
-    int opcao;
+    // ID delete
 
-    do {
-        printf("\n--- Menu ---\n");
-        printf("1 == Adicionar Produto\n");
-        printf("2 == Gerar Relatório\n");
-        printf("3 == Pesquisar Produto\n");
-        printf("4 == Remover Produto\n");
-        printf("0 == Sair\n");
-        printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+void Delete_ID (User Lis_usuario[]) {
+	clearScreen();
+	
+	int targetId;
+	printf("Digite um ID: ");
+	scanf("%d", &targetId);
 
-        switch (opcao) {
-            case 1:
-                adicionaProduto(&estoque);
-                break;
-            case 2:
-                geraRelatorio(&estoque);
-                break;
-            case 3:
-                pesquisaProduto(&estoque);
-                break;
-            case 4:
-                removeProduto(&estoque);
-                break;
-            case 0:
-                printf("Saindo do programa.\n");
-                break;
-            default:
-                printf("Opção inválida. Tente novamente.\n");
-        }
+	for(int i = 0; i < userListIndex; i++) {
+		if(targetId == Lis_usuario[i].id) {
+			remov_elemento(Lis_usuario, i, userListIndex);
+			return;
+		}
+	}
+	printf("O produto nao esta cadastrado. \n");
+}
 
-    } while (opcao != 0);
 
-    return 0;
+    // Identificador de opcao escolhida
+
+
+void identificador (User Lis_usuario[]) {
+	char input;
+	scanf("%s", &input);
+	getchar();
+
+	switch (input)
+	{
+	case 'C':
+	case 'c':
+		criacao_produto(Lis_usuario);
+		break;
+	case 'R':
+	case 'r':
+		ReadAll(Lis_usuario);
+		break;
+	case 'U':
+	case 'u':
+		Busc_ID(Lis_usuario);
+		break;
+	case 'D':
+	case 'd':
+		Delete_ID(Lis_usuario);
+		break;
+	default:
+		break;
+	}
+}
+
+int main () {
+	User* Lis_usuario = initiateList();
+
+	while (1) {
+		printf("\n");
+		printf("C - Crie \n");
+		printf("R - Leia tudo \n");
+		printf("U - Leia por ID \n");
+		printf("D - DELETE \n");
+		printf("Ctrl + C - SAIR \n");
+
+		identificador(Lis_usuario);
+	}
+
+
+	return 0;
 }
