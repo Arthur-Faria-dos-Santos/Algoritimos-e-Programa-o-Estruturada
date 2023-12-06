@@ -25,27 +25,27 @@ int lista_User = 0;
 
 void clearScreen();
 Node* initiateList ();
-void Ler_todos (Node *liskedListHead);
-void handleA (Node *liskedListHead); 
-void handleB (Node *liskedListHead); 
-void handleC (Node *liskedListHead); 
-void handleD (Node *liskedListHead); 
-void identificador (Node *liskedListHead);
+void Ler_todos (Node *list_vinculada);
+void handleA (Node *list_vinculada); 
+void handleB (Node *list_vinculada); 
+void handleC (Node *list_vinculada); 
+void handleD (Node *list_vinculada); 
+void identificador (Node *list_vinculada);
 
 
 int main () {
-	Node* liskedListHead = initiateList();
-    Ler_todos(liskedListHead);
+	Node* list_vinculada = initiateList();
+    Ler_todos(list_vinculada);
 
 	while (1) {
 		printf("--- \n");
-		printf("A - lista todos os proprietarios cujos carros são do ano de 2010 ou posterior e que sejam movidos a diesel \n");
+		printf("A - lista todos os proprietarios cujos carros sao do ano de 2010 ou posterior e que sejam movidos a diesel \n");
 		printf("B - lista todas as placas que comecem com a letra J e terminem com 0, 2, 4 ou 7 e seus respectivos proprietarios \n");
-		printf("C - lista o modelo e a cor dos veículos cujas placas possuem como segunda letra uma vogal e cuja soma dos valores numericos fornece um numero par \n");
-		printf("D - troca de proprietario com o fornecimento do numero do chassi apenas para carros com placas que não possuam nenhum digito igual a zero \n");
+		printf("C - lista o modelo e a cor dos veiculos cujas placas possuem como segunda letra uma vogal e cuja soma dos valores numericos fornece um numero par \n");
+		printf("D - troca de proprietario com o fornecimento do numero do chassi apenas para carros com placas que nao possuam nenhum digito igual a zero \n");
 		printf("Ctrl/C - SAIR \n");
 
-		identificador(liskedListHead);
+		identificador(list_vinculada);
 	}
 
 
@@ -116,11 +116,11 @@ Node* initiateList ()
 }
 
 
-void Ler_todos (Node *liskedListHead) 
+void Ler_todos (Node *list_vinculada) 
 {
 	printf("--- DEBUG --- \n\n");
 
-    Node *index = liskedListHead;
+    Node *index = list_vinculada;
 	while(index != NULL) {
         printf("%d \n", index->data.numChassi);
         index = index->prox;
@@ -129,10 +129,10 @@ void Ler_todos (Node *liskedListHead)
 
     // Uma função que liste todos os proprietários cujos carros são do ano de 2010 ou posterior e que sejam movidos a diesel.
     
-void handleA (Node *liskedListHead) 
+void handleA (Node *list_vinculada) 
 {
     printf("PROPRIETARIOS DE CARROS DO ANO DE 2010 OU POSTERIOR MOVIDO A DIESEL\n\n");    
-    Node *index = liskedListHead;
+    Node *index = list_vinculada;
 	while(index != NULL) {
         if (index->data.ano >= 2010 && strcmp(index->data.combustivel, "diesel") == 0) {
             printf("PROPRIETARIO: %s \n", index->data.owner);
@@ -142,10 +142,10 @@ void handleA (Node *liskedListHead)
     }   
 }
 
-void handleB (Node *liskedListHead)
+void handleB (Node *list_vinculada)
 {
     printf("TODAS AS PLACAS QUE COMECEM COM A LETRA J E TERMINEM COM 0, 2, 4 OU 7\n\n");    
-    Node *index = liskedListHead;
+    Node *index = list_vinculada;
 	while(index != NULL) {
         if (index->data.placa[0] == 'J' &&
             (
@@ -167,10 +167,10 @@ void handleB (Node *liskedListHead)
 //  Uma função que liste o modelo e a cor dos veículos cujas placas possuem como segunda letra uma vogal e cuja soma dos valores numéricos fornece um número par.
 //  Uma função que liste todas as placas que comecem com a letra J e terminem com 0, 2, 4 ou 7 e seus respectivos proprietários.
 
-void handleC (Node *liskedListHead) 
+void handleC (Node *list_vinculada) 
 {
-    printf("--- MODELO E A COR DOS VEICULOS COM PLACAS QUE POSSUEM COMO SEGUNDA LETRA UMA VOGAL E CUJA SOMA DOS VALORES NUMÉRICOS FORNECE UM NUMERO PAR --- \n\n");    
-    Node *index = liskedListHead;
+    printf("--- MODELO E A COR DOS VEICULOS COM PLACAS QUE POSSUEM COMO SEGUNDA LETRA UMA VOGAL E CUJA SOMA DOS VALORES NUMERICOS FORNECE UM NUMERO PAR --- \n\n");    
+    Node *index = list_vinculada;
 	while(index != NULL) {
         if (
             index->data.placa[1] == 'A' ||
@@ -211,14 +211,14 @@ void handleC (Node *liskedListHead)
 
     // Uma função que permita a troca de proprietário com o fornecimento do número do chassi apenas para carros com placas que não possuam nenhum dígito igual a zero.
 
-void handleD (Node *liskedListHead) 
+void handleD (Node *list_vinculada) 
 {
-    printf("\nTROCA DE PROPRIETARIO (apenas para carros com placas que não possuam nenhum digito igual a zero.): \n");    
+    printf("\nTROCA DE PROPRIETARIO (apenas para carros com placas que nao possuam nenhum digito igual a zero.): \n");    
     int numChassi;
     printf("DIGITE O NUMERO DO CHASSI: ");    
     scanf("%d", &numChassi);
 
-    Node *index = liskedListHead;
+    Node *index = list_vinculada;
 	while(index != NULL) {
         if(numChassi == index->data.numChassi) {
             int hasZero = 0;
@@ -249,7 +249,7 @@ void handleD (Node *liskedListHead)
     fflush(stdin);
 }
 
-void identificador (Node *liskedListHead)
+void identificador (Node *list_vinculada)
 {
 	char input;
 	scanf("%s", &input);
@@ -259,19 +259,19 @@ void identificador (Node *liskedListHead)
 	{
 	case 'A':
 	case 'a':
-		handleA(liskedListHead);
+		handleA(list_vinculada);
 		break;
 	case 'B':
 	case 'b':
-		handleB(liskedListHead);
+		handleB(list_vinculada);
 		break;
 	case 'C':
 	case 'c':
-		handleC(liskedListHead);
+		handleC(list_vinculada);
 		break;
 	case 'D':
 	case 'd':
-		handleD(liskedListHead);
+		handleD(list_vinculada);
 		break;
 	default:
 		break;
